@@ -2,152 +2,410 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
   <title>Therapetals Emergency Hotlines</title>
-  <link href="https://fonts.googleapis.com/css2?family=Della+Respira&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=DM+Sans:wght@400;500&display=swap" rel="stylesheet">
   <style>
+    :root {
+      --rose: #c0395e;
+      --rose-light: #e8728f;
+      --plum: #5c2d5e;
+      --plum-soft: #7a4080;
+      --cream: #fdf7f2;
+      --card-bg: #ffffff;
+      --text: #3a1c3b;
+      --text-muted: #8a6a8b;
+      --border: #f0dfe8;
+      --shadow: rgba(92, 45, 94, 0.08);
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
     body {
-      font-family: 'Della Respira', serif;
-      background: linear-gradient(135deg, #fdf6f9, #fff0d6, #e6d6f5);
-      color: #4a2c5b;
+      font-family: 'DM Sans', sans-serif;
+      background-color: var(--cream);
+      background-image:
+        radial-gradient(ellipse 80% 60% at 50% -10%, rgba(192, 57, 94, 0.08) 0%, transparent 70%),
+        radial-gradient(ellipse 60% 40% at 100% 80%, rgba(92, 45, 94, 0.06) 0%, transparent 60%);
+      color: var(--text);
+      min-height: 100vh;
+      padding: 0 0 40px 0;
+    }
+
+    /* ── Header ── */
+    .header {
+      background: linear-gradient(160deg, var(--plum) 0%, #8b3060 100%);
+      padding: 36px 20px 28px;
       text-align: center;
-      padding: 10px;
-      margin: 0;
+      position: relative;
+      overflow: hidden;
     }
-    h1 { color: #d6336c; margin: 10px 0; font-size: 22px; }
-    .tagline { font-size: 15px; margin-bottom: 15px; color: #7a3b6e; text-transform: capitalize; }
-    .block {
-      background: #fff;
+    .header::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.04'%3E%3Ccircle cx='30' cy='30' r='8'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+      pointer-events: none;
+    }
+    .header-petal { font-size: 28px; margin-bottom: 6px; display: block; }
+    .header h1 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 28px;
+      font-weight: 600;
+      color: #fff;
+      letter-spacing: 0.5px;
+      line-height: 1.2;
+    }
+    .header .tagline {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-size: 14px;
+      color: rgba(255,255,255,0.72);
+      margin-top: 8px;
+      line-height: 1.5;
+      padding: 0 10px;
+    }
+
+    /* ── Content area ── */
+    .content {
+      padding: 0 14px;
+      margin-top: 18px;
+    }
+
+    /* ── Section label ── */
+    .section-label {
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 1.4px;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      padding: 0 4px;
+      margin: 24px 0 10px;
+    }
+
+    /* ── Cards ── */
+    .card {
+      background: var(--card-bg);
+      border-radius: 16px;
+      padding: 16px 18px;
+      margin-bottom: 10px;
+      box-shadow: 0 2px 12px var(--shadow), 0 0 0 1px var(--border);
+      transition: box-shadow 0.2s;
+    }
+    .card:active { box-shadow: 0 1px 6px var(--shadow); }
+
+    .card-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 17px;
+      font-weight: 600;
+      color: var(--plum);
+      margin-bottom: 10px;
+      display: flex;
+      align-items: center;
+      gap: 7px;
+    }
+    .card-title .icon {
+      width: 28px; height: 28px;
+      background: linear-gradient(135deg, var(--rose), var(--plum-soft));
+      border-radius: 8px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 13px;
+      flex-shrink: 0;
+    }
+
+    /* ── Call rows ── */
+    .call-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 9px 0;
+      border-bottom: 1px solid var(--border);
+    }
+    .call-row:last-child { border-bottom: none; }
+
+    .call-label {
+      font-size: 13px;
+      color: var(--text-muted);
+      font-weight: 500;
+    }
+    .call-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: linear-gradient(135deg, var(--rose) 0%, #a82e54 100%);
+      color: #fff;
+      text-decoration: none;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 14px;
+      font-weight: 500;
+      padding: 8px 14px;
+      border-radius: 20px;
+      letter-spacing: 0.2px;
+      transition: opacity 0.15s, transform 0.1s;
+      white-space: nowrap;
+    }
+    .call-btn:active { opacity: 0.85; transform: scale(0.97); }
+    .call-btn::before { content: '📞'; font-size: 12px; }
+
+    /* Big single-number card */
+    .card-single {
+      text-align: center;
+      padding: 20px 18px;
+    }
+    .card-single .big-number {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 44px;
+      font-weight: 600;
+      color: var(--rose);
+      line-height: 1;
+      margin: 8px 0;
+    }
+    .card-single .call-btn-big {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: linear-gradient(135deg, var(--rose) 0%, #a82e54 100%);
+      color: #fff;
+      text-decoration: none;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 16px;
+      font-weight: 500;
+      padding: 12px 28px;
+      border-radius: 30px;
+      margin-top: 4px;
+      transition: opacity 0.15s, transform 0.1s;
+    }
+    .card-single .call-btn-big:active { opacity: 0.85; transform: scale(0.97); }
+    .card-single .call-btn-big::before { content: '📞'; font-size: 14px; }
+
+    /* ── Personal contacts block ── */
+    #personalCard { border: 1.5px dashed var(--border); background: #fdf5f9; }
+    .empty-note {
+      font-size: 13px;
+      color: var(--text-muted);
+      font-style: italic;
+      padding: 4px 0 2px;
+    }
+    #personalList .call-row { border-bottom: 1px solid var(--border); }
+
+    /* ── Form ── */
+    .form-card { background: var(--card-bg); }
+    .form-group { margin-bottom: 14px; }
+    .form-group label {
+      display: block;
+      font-size: 12px;
+      font-weight: 500;
+      letter-spacing: 0.6px;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin-bottom: 6px;
+    }
+    .form-group input {
+      width: 100%;
+      padding: 13px 14px;
+      border: 1.5px solid var(--border);
       border-radius: 12px;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 15px;
+      color: var(--text);
+      background: var(--cream);
+      outline: none;
+      transition: border-color 0.2s;
+      -webkit-appearance: none;
+    }
+    .form-group input:focus { border-color: var(--rose-light); background: #fff; }
+    .form-group input::placeholder { color: #c4afc5; }
+
+    .save-btn {
+      width: 100%;
       padding: 15px;
-      margin: 15px auto;
-      width: 100%;            /* full width on mobile */
-      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-      text-align: left;
-    }
-    .block h2 { color: #7a3b6e; margin-bottom: 8px; font-size: 18px; }
-    .block p { margin: 4px 0; font-size: 15px; }
-    a { color: #d6336c; text-decoration: none; font-weight: bold; }
-    label { display: block; margin: 6px 0 3px; font-size: 14px; }
-    input {
-      padding: 14px;
-      width: 100%;          /* full width for phone */
-      box-sizing: border-box;
-      border: 1px solid #ccc;
-      border-radius: 10px;
-      font-size: 16px;
-      margin-bottom: 14px;
-    }
-    button {
-      padding: 14px;
-      width: 100%;          /* full width like inputs */
-      background: #d6336c;
-      color: white;
+      background: linear-gradient(135deg, var(--rose) 0%, #9b2b50 100%);
+      color: #fff;
       border: none;
-      border-radius: 10px;
-      cursor: pointer;
-      font-family: 'Della Respira', serif;
+      border-radius: 14px;
+      font-family: 'DM Sans', sans-serif;
       font-size: 16px;
+      font-weight: 500;
+      cursor: pointer;
+      letter-spacing: 0.3px;
+      transition: opacity 0.15s, transform 0.1s;
     }
-    .footer { margin-top: 20px; font-size: 14px; color: #5a2c5b; text-align: center; }
+    .save-btn:active { opacity: 0.88; transform: scale(0.99); }
+
+    /* ── Footer ── */
+    .footer {
+      text-align: center;
+      padding: 28px 20px 0;
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-size: 15px;
+      color: var(--text-muted);
+    }
   </style>
 </head>
 <body>
-  <h1>🌸 Therapetals Emergency Hotlines 🌸</h1>
-  <p class="tagline">Small enough to clip on, mighty enough to carry you through. Every petal, a heartbeat.</p>
 
-  <!-- Personal Emergency Contacts block at TOP -->
-  <div class="block" id="personalContacts">
-    <h2>Personal Emergency Contacts</h2>
-    <p><em>Add your personal emergency contact using the form at the bottom of this page. Once saved, it will appear here for quick access.</em></p>
-    <div id="personalList"></div>
+  <div class="header">
+    <span class="header-petal">🌸</span>
+    <h1>Therapetals</h1>
+    <p class="tagline">Small enough to clip on, mighty enough to carry you through.<br>Every petal, a heartbeat.</p>
   </div>
 
-  <!-- Official hotlines -->
-  <div class="block">
-    <h2>NCMH Crisis Hotline (24/7)</h2>
-    <p>Landline: <a href="tel:1553">1553</a> (Luzon-wide toll-free)</p>
-    <p>Globe/TM: <a href="tel:+639178998727">0917-899-8727</a></p>
-    <p>Smart/TNT: <a href="tel:+639190571553">0919-057-1553</a></p>
-  </div>
+  <div class="content">
 
-  <div class="block">
-    <h2>HOPELINE (24/7)</h2>
-    <p>Landline: <a href="tel:+63288044673">(02) 8804-4673</a></p>
-    <p>Globe: <a href="tel:+639175584673">0917-558-4673</a></p>
-    <p>Smart: <a href="tel:+639188734673">0918-873-4673</a></p>
-  </div>
+    <!-- Personal contacts -->
+    <p class="section-label">Your Contacts</p>
+    <div class="card" id="personalCard">
+      <div class="card-title">
+        <div class="icon">🤍</div>
+        Personal Emergency Contacts
+      </div>
+      <p class="empty-note" id="emptyNote">Save a contact below — it will appear here.</p>
+      <div id="personalList"></div>
+    </div>
 
-  <div class="block">
-    <h2>In Touch Crisis Line (24/7)</h2>
-    <p>Landline: <a href="tel:+63288937603">(02) 8893-7603</a></p>
-    <p>Globe: <a href="tel:+639178001123">0917-800-1123</a></p>
-    <p>Sun: <a href="tel:+639228938944">0922-893-8944</a></p>
-  </div>
+    <!-- Hotlines -->
+    <p class="section-label">Crisis Hotlines</p>
 
-  <div class="block">
-    <h2>DSWD Crisis Hotline</h2>
-    <p>Landline: <a href="tel:180018881553">1800-1888-1553</a></p>
-    <p>Globe: <a href="tel:+639178998727">0917-899-8727</a></p>
-    <p>Sun: <a href="tel:+639190571553">0919-057-1553</a></p>
-  </div>
+    <!-- 911 -->
+    <div class="card card-single">
+      <div class="card-title" style="justify-content:center;">
+        <div class="icon">🚨</div>
+        National Emergency
+      </div>
+      <div class="big-number">911</div>
+      <a href="tel:911" class="call-btn-big">Call 911</a>
+    </div>
 
-  <div class="block">
-    <h2>National Emergency Hotline</h2>
-    <p><a href="tel:911">911</a></p>
-  </div>
+    <div class="card">
+      <div class="card-title"><div class="icon">🧠</div>NCMH Crisis Hotline (24/7)</div>
+      <div class="call-row">
+        <span class="call-label">Luzon toll-free</span>
+        <a href="tel:1553" class="call-btn">1553</a>
+      </div>
+      <div class="call-row">
+        <span class="call-label">Globe / TM</span>
+        <a href="tel:+639178998727" class="call-btn">0917-899-8727</a>
+      </div>
+      <div class="call-row">
+        <span class="call-label">Smart / TNT</span>
+        <a href="tel:+639190571553" class="call-btn">0919-057-1553</a>
+      </div>
+    </div>
 
-  <div class="block">
-    <h2>Philippine Red Cross</h2>
-    <p><a href="tel:143">143</a></p>
-    <p>Landline: <a href="tel:+63285278385">(02) 8527-8385</a></p>
-  </div>
+    <div class="card">
+      <div class="card-title"><div class="icon">💛</div>HOPELINE (24/7)</div>
+      <div class="call-row">
+        <span class="call-label">Landline</span>
+        <a href="tel:+63288044673" class="call-btn">(02) 8804-4673</a>
+      </div>
+      <div class="call-row">
+        <span class="call-label">Globe</span>
+        <a href="tel:+639175584673" class="call-btn">0917-558-4673</a>
+      </div>
+      <div class="call-row">
+        <span class="call-label">Smart</span>
+        <a href="tel:+639188734673" class="call-btn">0918-873-4673</a>
+      </div>
+    </div>
 
-  <!-- Custom contact form at the END -->
-  <div class="block">
-    <h2>Add Your Own Emergency Contact</h2>
-    <form id="customForm" onsubmit="addPersonalContact(); return false;">
-      <label for="name">Contact Name:</label>
-      <input type="text" id="name" placeholder="e.g. Mom">
-      
-      <label for="number">Phone Number:</label>
-      <input type="tel" id="number" placeholder="e.g. 09171234567">
-      
-      <button type="submit">Save Contact</button>
-    </form>
-  </div>
+    <div class="card">
+      <div class="card-title"><div class="icon">🌿</div>In Touch Crisis Line (24/7)</div>
+      <div class="call-row">
+        <span class="call-label">Landline</span>
+        <a href="tel:+63288937603" class="call-btn">(02) 8893-7603</a>
+      </div>
+      <div class="call-row">
+        <span class="call-label">Globe</span>
+        <a href="tel:+639178001123" class="call-btn">0917-800-1123</a>
+      </div>
+      <div class="call-row">
+        <span class="call-label">Sun</span>
+        <a href="tel:+639228938944" class="call-btn">0922-893-8944</a>
+      </div>
+    </div>
 
-  <p class="footer">Help is reachable, you are never alone.</p>
+    <div class="card">
+      <div class="card-title"><div class="icon">🏛️</div>DSWD Crisis Hotline</div>
+      <div class="call-row">
+        <span class="call-label">Landline</span>
+        <a href="tel:180018881553" class="call-btn">1800-1888-1553</a>
+      </div>
+      <div class="call-row">
+        <span class="call-label">Globe</span>
+        <a href="tel:+639178998727" class="call-btn">0917-899-8727</a>
+      </div>
+      <div class="call-row">
+        <span class="call-label">Sun</span>
+        <a href="tel:+639190571553" class="call-btn">0919-057-1553</a>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title"><div class="icon">🔴</div>Philippine Red Cross</div>
+      <div class="call-row">
+        <span class="call-label">Short code</span>
+        <a href="tel:143" class="call-btn">143</a>
+      </div>
+      <div class="call-row">
+        <span class="call-label">Landline</span>
+        <a href="tel:+63285278385" class="call-btn">(02) 8527-8385</a>
+      </div>
+    </div>
+
+    <!-- Add contact form -->
+    <p class="section-label">Add a Contact</p>
+    <div class="card form-card">
+      <div class="card-title"><div class="icon">➕</div>Save Emergency Contact</div>
+      <div class="form-group">
+        <label for="name">Contact Name</label>
+        <input type="text" id="name" placeholder="e.g. Mom">
+      </div>
+      <div class="form-group">
+        <label for="number">Phone Number</label>
+        <input type="tel" id="number" placeholder="e.g. 09171234567">
+      </div>
+      <button class="save-btn" onclick="addPersonalContact()">Save Contact</button>
+    </div>
+
+    <p class="footer">Help is reachable — you are never alone. 🌸</p>
+  </div>
 
   <script>
     function addPersonalContact() {
-      const name = document.getElementById('name').value;
-      const number = document.getElementById('number').value;
-      if(name && number) {
-        const list = document.getElementById('personalList');
-        const entry = document.createElement('p');
-        entry.innerHTML = `<strong>${name}:</strong> <a href="tel:${number}">${number}</a>`;
-        list.insertBefore(entry, list.firstChild);
-
-        // Save to localStorage
-        localStorage.setItem('personalContact', JSON.stringify({name, number}));
-
-        document.getElementById('customForm').reset();
+      const name = document.getElementById('name').value.trim();
+      const number = document.getElementById('number').value.trim();
+      if (name && number) {
+        renderContact(name, number);
+        localStorage.setItem('personalContact', JSON.stringify({ name, number }));
+        document.getElementById('name').value = '';
+        document.getElementById('number').value = '';
       } else {
-        alert("Please enter both name and number.");
+        alert('Please enter both a name and a phone number.');
       }
     }
 
-    // Load saved contact when page opens
-    window.onload = function() {
-      const saved = localStorage.getItem('personalContact');
-      if(saved) {
-        const {name, number} = JSON.parse(saved);
-        const list = document.getElementById('personalList');
-        const entry = document.createElement('p');
-        entry.innerHTML = `<strong>${name}:</strong> <a href="tel:${number}">${number}</a>`;
-        list.insertBefore(entry, list.firstChild);
-      }
+    function renderContact(name, number) {
+      document.getElementById('emptyNote').style.display = 'none';
+      const list = document.getElementById('personalList');
+      // Remove existing entry if any
+      list.innerHTML = '';
+      const row = document.createElement('div');
+      row.className = 'call-row';
+      row.innerHTML = `
+        <span class="call-label" style="font-weight:500;color:var(--text);">${name}</span>
+        <a href="tel:${number}" class="call-btn">${number}</a>
+      `;
+      list.appendChild(row);
     }
+
+    window.onload = function () {
+      const saved = localStorage.getItem('personalContact');
+      if (saved) {
+        const { name, number } = JSON.parse(saved);
+        renderContact(name, number);
+      }
+    };
   </script>
 </body>
 </html>
