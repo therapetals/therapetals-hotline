@@ -2,78 +2,128 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>TheraPetals Emergency Hotlines</title>
+  <title>TheraPetals Emergency Hotline</title>
+  <!-- Google Font: Della Respira -->
+  <link href="https://fonts.googleapis.com/css2?family=Della+Respira&display=swap" rel="stylesheet">
   <style>
     body {
-      font-family: Arial, sans-serif;
-      background: #fdf6f9;
-      color: #333;
-      margin: 20px;
+      font-family: 'Della Respira', serif;
+      background: linear-gradient(135deg, #fdf6f9, #fff0d6, #e6d6f5);
+      color: #4a2c5b;
+      text-align: center;
+      padding: 20px;
     }
     h1 {
-      text-align: center;
-      color: #d46a92;
+      color: #d6336c;
+      margin-bottom: 10px;
     }
-    h2 {
-      color: #555;
-      margin-top: 20px;
+    .contacts {
+      background: #fff;
+      border-radius: 12px;
+      padding: 20px;
+      margin: 20px auto;
+      max-width: 600px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
     }
-    ul {
-      list-style: none;
-      padding: 0;
-    }
-    li {
-      margin: 8px 0;
+    .contacts p {
+      margin: 10px 0;
+      font-size: 18px;
     }
     a {
+      color: #d6336c;
       text-decoration: none;
-      color: #0077cc;
       font-weight: bold;
     }
-    a:hover {
-      color: #005599;
-    }
-    .footer {
+    .custom-contact {
       margin-top: 30px;
-      text-align: center;
-      font-size: 0.9em;
-      color: #777;
+      background: #fef6ff;
+      border-radius: 12px;
+      padding: 20px;
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    label {
+      display: block;
+      margin: 8px 0 4px;
+    }
+    input {
+      padding: 8px;
+      width: 80%;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+    }
+    button {
+      margin-top: 10px;
+      padding: 10px 16px;
+      background: #d6336c;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-family: 'Della Respira', serif;
+    }
+    .flower {
+      font-size: 40px;
+      margin: 10px;
+      color: #f7a8b8;
     }
   </style>
 </head>
 <body>
-  <h1>TheraPetals Emergency Hotlines</h1>
+  <h1>🌸 TheraPetals Emergency Hotlines 🌸</h1>
 
-  <h2>Mental Health Support</h2>
-  <ul>
-    <li><a href="tel:1553">DOH Mental Health Hotline (PH) – 1553</a></li>
-    <li><a href="tel:09178998727">NCMH Crisis Hotline – 0917-899-8727</a></li>
-    <li><a href="tel:9898727">NCMH Landline – 989-8727</a></li>
-  </ul>
-
-  <h2>Emergency Services</h2>
-  <ul>
-    <li><a href="tel:911">National Emergency – 911</a></li>
-    <li><a href="tel:117">Police Assistance – 117</a></li>
-    <li>Fire Department – Local hotline</li>
-    <li>Ambulance – Local hotline</li>
-  </ul>
-
-  <h2>Crisis Hotlines</h2>
-  <ul>
-    <li><a href="tel:09178806469">Women’s Crisis Center – 0917-880-6469</a></li>
-    <li><a href="tel:163">Child Protection Hotline – 163</a></li>
-  </ul>
-
-  <h2>International Access</h2>
-  <ul>
-    <li><a href="tel:988">Suicide Prevention Lifeline (US) – 988</a></li>
-    <li><a href="tel:116123">Samaritans (UK) – 116 123</a></li>
-    <li><a href="tel:131114">Lifeline (Australia) – 13 11 14</a></li>
-  </ul>
-
-  <div class="footer">
-    <p>Tap the NFC chip to access this folder anytime. Help is one heartbeat away.</p>
+  <div class="contacts">
+    <p><strong>NCMH Crisis Hotline (24/7):</strong> 
+      <a href="tel:1553">1553</a> | 
+      <a href="tel:+63279898727">(02) 7-989-8727</a> | 
+      <a href="tel:+639178998727">0917-899-8727</a>
+    </p>
+    <p><strong>HOPELINE (24/7):</strong> 
+      <a href="tel:+63288044673">(02) 8804-4673</a> | 
+      <a href="tel:+639175584673">0917-558-4673</a> | 
+      <a href="tel:+639188734673">0918-873-4673</a>
+    </p>
+    <p><strong>In Touch Crisis Line (24/7):</strong> 
+      <a href="tel:+63288937603">(02) 8893-7603</a> | 
+      <a href="tel:+639178001123">0917-800-1123</a> | 
+      <a href="tel:+639228938944">0922-893-8944</a>
+    </p>
+    <p><strong>National Emergency Hotline:</strong> <a href="tel:911">911</a></p>
+    <p><strong>Philippine Red Cross:</strong> <a href="tel:143">143</a> | 
+      <a href="tel:+63285278385">(02) 8527-8385</a>
+    </p>
   </div>
+
+  <div class="custom-contact">
+    <h2>🌼 Add Your Own Emergency Contact 🌼</h2>
+    <form id="customForm">
+      <label for="name">Contact Name:</label>
+      <input type="text" id="name" placeholder="e.g. Mom">
+      
+      <label for="number">Phone Number:</label>
+      <input type="tel" id="number" placeholder="e.g. 09171234567">
+      
+      <button type="button" onclick="addContact()">Save Contact</button>
+    </form>
+    
+    <div id="customList"></div>
+  </div>
+
+  <script>
+    function addContact() {
+      const name = document.getElementById('name').value;
+      const number = document.getElementById('number').value;
+      if(name && number) {
+        const list = document.getElementById('customList');
+        const entry = document.createElement('p');
+        entry.innerHTML = `<strong>${name}:</strong> <a href="tel:${number}">${number}</a>`;
+        list.appendChild(entry);
+        document.getElementById('customForm').reset();
+      } else {
+        alert("Please enter both name and number.");
+      }
+    }
+  </script>
 </body>
 </html>
