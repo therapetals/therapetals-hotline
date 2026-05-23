@@ -10,44 +10,65 @@
       background: linear-gradient(135deg, #fdf6f9, #fff0d6, #e6d6f5);
       color: #4a2c5b;
       text-align: center;
-      padding: 20px;
+      padding: 10px;
+      margin: 0;
     }
-    h1 { color: #d6336c; margin-bottom: 10px; }
-    .tagline { font-size: 18px; margin-bottom: 20px; color: #7a3b6e; }
+    h1 { color: #d6336c; margin: 10px 0; font-size: 22px; }
+    .tagline { font-size: 14px; margin-bottom: 15px; color: #7a3b6e; }
     .block {
       background: #fff;
       border-radius: 12px;
-      padding: 20px;
-      margin: 20px auto;
-      max-width: 700px;
+      padding: 15px;
+      margin: 15px auto;
+      width: 100%;
+      max-width: 500px;
       box-shadow: 0 4px 10px rgba(0,0,0,0.1);
       text-align: left;
     }
-    .block h2 { color: #7a3b6e; margin-bottom: 10px; }
-    .block p { margin: 6px 0; font-size: 18px; }
+    .block h2 { color: #7a3b6e; margin-bottom: 8px; font-size: 18px; }
+    .block p { margin: 4px 0; font-size: 15px; }
     a { color: #d6336c; text-decoration: none; font-weight: bold; }
-    label { display: block; margin: 8px 0 4px; }
-    input {
-      padding: 8px; width: 90%;
-      border: 1px solid #ccc; border-radius: 6px;
-    }
+    label { display: block; margin: 6px 0 3px; font-size: 14px; }
+
+input {
+  padding: 10px;
+  width: 85%;       /* smaller than full width */
+  max-width: 320px; /* cap size so it doesn’t stretch too far */
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 14px;
+  display: block;
+  margin: 0 auto 10px; /* center the box and add spacing */
+}
+
     button {
-      margin-top: 10px; padding: 10px 16px;
+      margin-top: 10px; padding: 12px;
+      width: 100%;
       background: #d6336c; color: white;
       border: none; border-radius: 6px;
       cursor: pointer; font-family: 'Della Respira', serif;
+      font-size: 15px;
     }
-    .footer { margin-top: 30px; font-size: 16px; color: #5a2c5b; text-align: center; }
+    .footer { margin-top: 20px; font-size: 14px; color: #5a2c5b; text-align: center; }
+
+    /* Mobile adjustments */
+    @media (max-width: 600px) {
+      h1 { font-size: 20px; }
+      .block { padding: 12px; }
+      .block h2 { font-size: 16px; }
+      .block p { font-size: 14px; }
+      button { font-size: 14px; }
+    }
   </style>
 </head>
 <body>
-  <h1>🌸 Therapetals Emergency Hotlines 🌸</h1>
-  <p class="tagline">Small enough to clip on, mighty enough to carry you through. Every petal, a heartbeat.</p>
+  <h1>🌸 TheraPetals Emergency Hotlines 🌸</h1>
+  <p class="tagline">small enough to clip on, mighty enough to carry you through. every petal, a heartbeat.</p>
 
   <!-- Personal Emergency Contacts block at TOP -->
   <div class="block" id="personalContacts">
     <h2>Personal Emergency Contacts</h2>
-    <p><em> Add your personal emergency contact using the form at the bottom of this page. Once saved, it will appear here for quick access.</em></p>
+    <p><em>👉 Add your personal emergency contact using the form at the bottom of this page. Once saved, it will appear here for quick access.</em></p>
     <div id="personalList"></div>
   </div>
 
@@ -92,7 +113,7 @@
   </div>
 
   <!-- Custom contact form at the END -->
-  <div class="custom-contact block">
+  <div class="block">
     <h2>🌼 Add Your Own Emergency Contact 🌼</h2>
     <form id="customForm" onsubmit="addPersonalContact(); return false;">
       <label for="name">Contact Name:</label>
@@ -105,7 +126,7 @@
     </form>
   </div>
 
-  <p class="footer"> Help is reachable, you are never alone. </p>
+  <p class="footer">✨ Help is reachable, you are never alone. ✨</p>
 
   <script>
     function addPersonalContact() {
