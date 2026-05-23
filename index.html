@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Therapetals Emergency Hotline</title>
+  <title>Therapetals Emergency Hotlines</title>
   <link href="https://fonts.googleapis.com/css2?family=Della+Respira&display=swap" rel="stylesheet">
   <style>
     body {
@@ -14,7 +14,7 @@
       margin: 0;
     }
     h1 { color: #d6336c; margin: 10px 0; font-size: 22px; }
-    .tagline { font-size: 14px; margin-bottom: 15px; color: #7a3b6e; }
+    .tagline { font-size: 15px; margin-bottom: 15px; color: #7a3b6e; text-transform: capitalize; }
     .block {
       background: #fff;
       border-radius: 12px;
@@ -29,36 +29,27 @@
     .block p { margin: 4px 0; font-size: 15px; }
     a { color: #d6336c; text-decoration: none; font-weight: bold; }
     label { display: block; margin: 6px 0 3px; font-size: 14px; }
-
-input {
-  padding: 12px;
-  width: 95%;   
-  max-width: 400px; 
-  border: 1px solid #ccc;
-  border-radius: 10px;
-  font-size: 16px; 
-  display: block;
-  margin: 0 auto 14px;
-}
-
+    input {
+      padding: 14px;
+      width: 100%;          /* full width for phone */
+      box-sizing: border-box;
+      border: 1px solid #ccc;
+      border-radius: 10px;
+      font-size: 16px;
+      margin-bottom: 14px;
+    }
     button {
-      margin-top: 10px; padding: 12px;
-      width: 100%;
-      background: #d6336c; color: white;
-      border: none; border-radius: 6px;
-      cursor: pointer; font-family: 'Della Respira', serif;
-      font-size: 15px;
+      padding: 14px;
+      width: 100%;          /* full width like inputs */
+      background: #d6336c;
+      color: white;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      font-family: 'Della Respira', serif;
+      font-size: 16px;
     }
     .footer { margin-top: 20px; font-size: 14px; color: #5a2c5b; text-align: center; }
-
-    /* Mobile adjustments */
-    @media (max-width: 600px) {
-      h1 { font-size: 20px; }
-      .block { padding: 12px; }
-      .block h2 { font-size: 16px; }
-      .block p { font-size: 14px; }
-      button { font-size: 14px; }
-    }
   </style>
 </head>
 <body>
@@ -68,7 +59,7 @@ input {
   <!-- Personal Emergency Contacts block at TOP -->
   <div class="block" id="personalContacts">
     <h2>Personal Emergency Contacts</h2>
-    <p><em> Add your personal emergency contact using the form at the bottom of this page. Once saved, it will appear here for quick access.</em></p>
+    <p><em>Add your personal emergency contact using the form at the bottom of this page. Once saved, it will appear here for quick access.</em></p>
     <div id="personalList"></div>
   </div>
 
@@ -114,7 +105,7 @@ input {
 
   <!-- Custom contact form at the END -->
   <div class="block">
-    <h2> Add Your Own Emergency Contact </h2>
+    <h2>Add Your Own Emergency Contact</h2>
     <form id="customForm" onsubmit="addPersonalContact(); return false;">
       <label for="name">Contact Name:</label>
       <input type="text" id="name" placeholder="e.g. Mom">
@@ -126,7 +117,7 @@ input {
     </form>
   </div>
 
-  <p class="footer"> Help is reachable, you are never alone. </p>
+  <p class="footer">Help is reachable, you are never alone.</p>
 
   <script>
     function addPersonalContact() {
