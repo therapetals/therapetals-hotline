@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>TheraPetals Emergency Hotline</title>
+  <title>Therapetals Emergency Hotline</title>
   <!-- Google Font: Della Respira -->
   <link href="https://fonts.googleapis.com/css2?family=Della+Respira&display=swap" rel="stylesheet">
   <style>
@@ -17,16 +17,12 @@
       color: #d6336c;
       margin-bottom: 10px;
     }
-    h2 {
-      color: #7a3b6e;
-      margin-top: 20px;
-    }
     .tagline {
       font-size: 18px;
       margin-bottom: 20px;
       color: #7a3b6e;
     }
-    .contacts, .custom-contact {
+    .block {
       background: #fff;
       border-radius: 12px;
       padding: 20px;
@@ -35,7 +31,11 @@
       box-shadow: 0 4px 10px rgba(0,0,0,0.1);
       text-align: left;
     }
-    .contacts p {
+    .block h2 {
+      color: #7a3b6e;
+      margin-bottom: 10px;
+    }
+    .block p {
       margin: 6px 0;
       font-size: 18px;
     }
@@ -68,70 +68,86 @@
       margin-top: 30px;
       font-size: 16px;
       color: #5a2c5b;
+      text-align: center;
     }
   </style>
 </head>
 <body>
   <h1>🌸 TheraPetals Emergency Hotlines 🌸</h1>
-  <p class="tagline">small enough to clip on, mighty enough to carry you through. every petal, a heartbeat.</p>
+  <p class="tagline">Small enough to clip on, mighty enough to carry you through. Every petal, a heartbeat.</p>
 
-  <!-- Emergency contacts first -->
-  <div class="contacts">
+  <!-- Personal Emergency Contacts block at TOP -->
+  <div class="block" id="personalContacts">
+    <h2>Personal Emergency Contacts</h2>
+    <p><em> Add your personal emergency contact using the form at the bottom of this page. Saved contacts will appear here for quick access.</em></p>
+    <div id="personalList"></div>
+  </div>
+
+  <!-- Official hotlines -->
+  <div class="block">
     <h2>NCMH Crisis Hotline (24/7)</h2>
     <p>Landline: <a href="tel:1553">1553</a> (Luzon-wide toll-free)</p>
     <p>Globe/TM: <a href="tel:+639178998727">0917-899-8727</a></p>
     <p>Smart/TNT: <a href="tel:+639190571553">0919-057-1553</a></p>
+  </div>
 
+  <div class="block">
     <h2>HOPELINE (24/7)</h2>
     <p>Landline: <a href="tel:+63288044673">(02) 8804-4673</a></p>
     <p>Globe: <a href="tel:+639175584673">0917-558-4673</a></p>
     <p>Smart: <a href="tel:+639188734673">0918-873-4673</a></p>
+  </div>
 
+  <div class="block">
     <h2>In Touch Crisis Line (24/7)</h2>
     <p>Landline: <a href="tel:+63288937603">(02) 8893-7603</a></p>
     <p>Globe: <a href="tel:+639178001123">0917-800-1123</a></p>
     <p>Sun: <a href="tel:+639228938944">0922-893-8944</a></p>
+  </div>
 
+  <div class="block">
     <h2>DSWD Crisis Hotline</h2>
     <p>Landline: <a href="tel:180018881553">1800-1888-1553</a></p>
     <p>Globe: <a href="tel:+639178998727">0917-899-8727</a></p>
     <p>Sun: <a href="tel:+639190571553">0919-057-1553</a></p>
+  </div>
 
+  <div class="block">
     <h2>National Emergency Hotline</h2>
     <p><a href="tel:911">911</a></p>
+  </div>
 
+  <div class="block">
     <h2>Philippine Red Cross</h2>
     <p><a href="tel:143">143</a></p>
     <p>Landline: <a href="tel:+63285278385">(02) 8527-8385</a></p>
   </div>
 
-  <!-- Custom contacts after -->
+  <!-- Custom contact form at the END -->
   <div class="custom-contact">
-    <h2>🌼 Add Your Own Emergency Contact 🌼</h2>
-    <form id="customForm">
+    <h2> Add Your Own Emergency Contact </h2>
+    <form id="customForm" onsubmit="addPersonalContact(); return false;">
       <label for="name">Contact Name:</label>
       <input type="text" id="name" placeholder="e.g. Mom">
       
       <label for="number">Phone Number:</label>
       <input type="tel" id="number" placeholder="e.g. 09171234567">
       
-      <button type="button" onclick="addContact()">Save Contact</button>
+      <button type="submit">Save Contact</button>
     </form>
-    
-    <div id="customList"></div>
   </div>
 
-  <p class="footer">✨ Help is reachable, you are never alone. ✨</p>
+  <p class="footer"> Help is reachable, you are never alone. </p>
 
   <script>
-    function addContact() {
+    function addPersonalContact() {
       const name = document.getElementById('name').value;
       const number = document.getElementById('number').value;
       if(name && number) {
-        const list = document.getElementById('customList');
+        const list = document.getElementById('personalList');
         const entry = document.createElement('p');
         entry.innerHTML = `<strong>${name}:</strong> <a href="tel:${number}">${number}</a>`;
-        list.appendChild(entry);
+        list.insertBefore(entry, list.firstChild); // always insert at TOP
         document.getElementById('customForm').reset();
       } else {
         alert("Please enter both name and number.");
