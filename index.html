@@ -17,15 +17,21 @@
       color: #d6336c;
       margin-bottom: 10px;
     }
-    .contacts {
+    .tagline {
+      font-size: 18px;
+      margin-bottom: 20px;
+      color: #7a3b6e;
+    }
+    .contacts, .custom-contact {
       background: #fff;
       border-radius: 12px;
       padding: 20px;
       margin: 20px auto;
-      max-width: 600px;
+      max-width: 700px;
       box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      text-align: left;
     }
-    .contacts p {
+    .contacts p, .custom-contact p {
       margin: 10px 0;
       font-size: 18px;
     }
@@ -34,22 +40,13 @@
       text-decoration: none;
       font-weight: bold;
     }
-    .custom-contact {
-      margin-top: 30px;
-      background: #fef6ff;
-      border-radius: 12px;
-      padding: 20px;
-      max-width: 600px;
-      margin-left: auto;
-      margin-right: auto;
-    }
     label {
       display: block;
       margin: 8px 0 4px;
     }
     input {
       padding: 8px;
-      width: 80%;
+      width: 90%;
       border: 1px solid #ccc;
       border-radius: 6px;
     }
@@ -63,38 +60,18 @@
       cursor: pointer;
       font-family: 'Della Respira', serif;
     }
-    .flower {
-      font-size: 40px;
-      margin: 10px;
-      color: #f7a8b8;
+    .footer {
+      margin-top: 30px;
+      font-size: 16px;
+      color: #5a2c5b;
     }
   </style>
 </head>
 <body>
   <h1>🌸 TheraPetals Emergency Hotlines 🌸</h1>
+  <p class="tagline">small enough to clip on, mighty enough to carry you through. every petal, a heartbeat.</p>
 
-  <div class="contacts">
-    <p><strong>NCMH Crisis Hotline (24/7):</strong> 
-      <a href="tel:1553">1553</a> | 
-      <a href="tel:+63279898727">(02) 7-989-8727</a> | 
-      <a href="tel:+639178998727">0917-899-8727</a>
-    </p>
-    <p><strong>HOPELINE (24/7):</strong> 
-      <a href="tel:+63288044673">(02) 8804-4673</a> | 
-      <a href="tel:+639175584673">0917-558-4673</a> | 
-      <a href="tel:+639188734673">0918-873-4673</a>
-    </p>
-    <p><strong>In Touch Crisis Line (24/7):</strong> 
-      <a href="tel:+63288937603">(02) 8893-7603</a> | 
-      <a href="tel:+639178001123">0917-800-1123</a> | 
-      <a href="tel:+639228938944">0922-893-8944</a>
-    </p>
-    <p><strong>National Emergency Hotline:</strong> <a href="tel:911">911</a></p>
-    <p><strong>Philippine Red Cross:</strong> <a href="tel:143">143</a> | 
-      <a href="tel:+63285278385">(02) 8527-8385</a>
-    </p>
-  </div>
-
+  <!-- Custom contacts first -->
   <div class="custom-contact">
     <h2>🌼 Add Your Own Emergency Contact 🌼</h2>
     <form id="customForm">
@@ -109,6 +86,31 @@
     
     <div id="customList"></div>
   </div>
+
+  <!-- Official hotlines -->
+  <div class="contacts">
+    <p><strong>NCMH Crisis Hotline (24/7):</strong> 
+      Landline: <a href="tel:1553">1553</a> (Luzon-wide toll-free) | 
+      Globe/TM: <a href="tel:+639178998727">0917-899-8727</a> | 
+      Smart/TNT: <a href="tel:+639190571553">0919-057-1553</a>
+    </p>
+    <p><strong>HOPELINE (24/7):</strong> 
+      Landline: <a href="tel:+63288044673">(02) 8804-4673</a> | 
+      Globe: <a href="tel:+639175584673">0917-558-4673</a> | 
+      Smart: <a href="tel:+639188734673">0918-873-4673</a>
+    </p>
+    <p><strong>In Touch Crisis Line (24/7):</strong> 
+      Landline: <a href="tel:+63288937603">(02) 8893-7603</a> | 
+      Globe: <a href="tel:+639178001123">0917-800-1123</a> | 
+      Sun: <a href="tel:+639228938944">0922-893-8944</a>
+    </p>
+    <p><strong>National Emergency Hotline:</strong> <a href="tel:911">911</a></p>
+    <p><strong>Philippine Red Cross:</strong> <a href="tel:143">143</a> | 
+      Landline: <a href="tel:+63285278385">(02) 8527-8385</a>
+    </p>
+  </div>
+
+  <p class="footer"> Help is reachable, you are never alone. </p>
 
   <script>
     function addContact() {
