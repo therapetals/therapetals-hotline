@@ -2,8 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Therapetals Emergency Hotline</title>
-  <!-- Google Font: Della Respira -->
+  <title>TheraPetals Emergency Hotline</title>
   <link href="https://fonts.googleapis.com/css2?family=Della+Respira&display=swap" rel="stylesheet">
   <style>
     body {
@@ -13,15 +12,8 @@
       text-align: center;
       padding: 20px;
     }
-    h1 {
-      color: #d6336c;
-      margin-bottom: 10px;
-    }
-    .tagline {
-      font-size: 18px;
-      margin-bottom: 20px;
-      color: #7a3b6e;
-    }
+    h1 { color: #d6336c; margin-bottom: 10px; }
+    .tagline { font-size: 18px; margin-bottom: 20px; color: #7a3b6e; }
     .block {
       background: #fff;
       border-radius: 12px;
@@ -31,55 +23,31 @@
       box-shadow: 0 4px 10px rgba(0,0,0,0.1);
       text-align: left;
     }
-    .block h2 {
-      color: #7a3b6e;
-      margin-bottom: 10px;
-    }
-    .block p {
-      margin: 6px 0;
-      font-size: 18px;
-    }
-    a {
-      color: #d6336c;
-      text-decoration: none;
-      font-weight: bold;
-    }
-    label {
-      display: block;
-      margin: 8px 0 4px;
-    }
+    .block h2 { color: #7a3b6e; margin-bottom: 10px; }
+    .block p { margin: 6px 0; font-size: 18px; }
+    a { color: #d6336c; text-decoration: none; font-weight: bold; }
+    label { display: block; margin: 8px 0 4px; }
     input {
-      padding: 8px;
-      width: 90%;
-      border: 1px solid #ccc;
-      border-radius: 6px;
+      padding: 8px; width: 90%;
+      border: 1px solid #ccc; border-radius: 6px;
     }
     button {
-      margin-top: 10px;
-      padding: 10px 16px;
-      background: #d6336c;
-      color: white;
-      border: none;
-      border-radius: 6px;
-      cursor: pointer;
-      font-family: 'Della Respira', serif;
+      margin-top: 10px; padding: 10px 16px;
+      background: #d6336c; color: white;
+      border: none; border-radius: 6px;
+      cursor: pointer; font-family: 'Della Respira', serif;
     }
-    .footer {
-      margin-top: 30px;
-      font-size: 16px;
-      color: #5a2c5b;
-      text-align: center;
-    }
+    .footer { margin-top: 30px; font-size: 16px; color: #5a2c5b; text-align: center; }
   </style>
 </head>
 <body>
-  <h1>🌸 TheraPetals Emergency Hotlines 🌸</h1>
+  <h1>🌸 Therapetals Emergency Hotlines 🌸</h1>
   <p class="tagline">Small enough to clip on, mighty enough to carry you through. Every petal, a heartbeat.</p>
 
   <!-- Personal Emergency Contacts block at TOP -->
   <div class="block" id="personalContacts">
     <h2>Personal Emergency Contacts</h2>
-    <p><em> Add your personal emergency contact using the form at the bottom of this page. Saved contacts will appear here for quick access.</em></p>
+    <p><em> Add your personal emergency contact using the form at the bottom of this page. Once saved, it will appear here for quick access.</em></p>
     <div id="personalList"></div>
   </div>
 
@@ -124,8 +92,8 @@
   </div>
 
   <!-- Custom contact form at the END -->
-  <div class="custom-contact">
-    <h2> Add Your Own Emergency Contact </h2>
+  <div class="custom-contact block">
+    <h2>🌼 Add Your Own Emergency Contact 🌼</h2>
     <form id="customForm" onsubmit="addPersonalContact(); return false;">
       <label for="name">Contact Name:</label>
       <input type="text" id="name" placeholder="e.g. Mom">
@@ -147,10 +115,26 @@
         const list = document.getElementById('personalList');
         const entry = document.createElement('p');
         entry.innerHTML = `<strong>${name}:</strong> <a href="tel:${number}">${number}</a>`;
-        list.insertBefore(entry, list.firstChild); // always insert at TOP
+        list.insertBefore(entry, list.firstChild);
+
+        // Save to localStorage
+        localStorage.setItem('personalContact', JSON.stringify({name, number}));
+
         document.getElementById('customForm').reset();
       } else {
         alert("Please enter both name and number.");
+      }
+    }
+
+    // Load saved contact when page opens
+    window.onload = function() {
+      const saved = localStorage.getItem('personalContact');
+      if(saved) {
+        const {name, number} = JSON.parse(saved);
+        const list = document.getElementById('personalList');
+        const entry = document.createElement('p');
+        entry.innerHTML = `<strong>${name}:</strong> <a href="tel:${number}">${number}</a>`;
+        list.insertBefore(entry, list.firstChild);
       }
     }
   </script>
