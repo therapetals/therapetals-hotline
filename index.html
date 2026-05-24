@@ -4,6 +4,11 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
   <title>Therapetals Emergency Contacts</title>
+  <link rel="manifest" href="manifest.json">
+  <meta name="theme-color" content="#e8c4f0">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <meta name="apple-mobile-web-app-title" content="Therapetals">
   <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Della+Respira&family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
   <style>
     :root {
@@ -329,6 +334,13 @@
         renderContact(name, number);
       }
     };
+
+    // Register service worker for offline support
+    if ("serviceWorker" in navigator) {
+      navigator.serviceWorker.register("sw.js").then(() => {
+        console.log("Therapetals SW registered");
+      }).catch(err => console.log("SW registration failed:", err));
+    }
   </script>
 </body>
 </html>
